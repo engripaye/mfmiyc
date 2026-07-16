@@ -5,6 +5,7 @@ import dto.MemberFormRequest;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import service.MemberFormService;
 
 @RestController
 @RequestMapping("/api/members")
