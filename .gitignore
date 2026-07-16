@@ -1,4 +1,10 @@
 HELP.md
+.DS_Store
+**/.DS_Store
+**/.env
+**/node_modules/
+**/dist/
+**/service-account*.json
 target/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
