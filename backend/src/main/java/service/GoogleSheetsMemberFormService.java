@@ -60,4 +60,22 @@ public class GoogleSheetsMemberFormService implements MemberFormService {
         }
     }
 
+    private String clean(String value) {
+        if (value == null) {
+            return "";
+        }
+
+        String trimmed = value.trim();
+
+        // Stops spreadsheet-formula injection from public input.
+        if (trimmed.startsWith("=")
+                || trimmed.startsWith("+")
+                || trimmed.startsWith("-")
+                || trimmed.startsWith("@")) {
+            return "'" + trimmed;
+        }
+
+        return trimmed;
+    }
+
 }
