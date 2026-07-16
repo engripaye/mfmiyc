@@ -1,6 +1,7 @@
 package exception;
 
 import dto.ApiResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -25,4 +26,25 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest()
                 .body(new ApiResponse(false, message));
     }
+
+    @ExceptionHandler(GoogleSheetsException.class)
+    public ResponseEntity<ApiResponse> handleGoogleSheets(
+            GoogleSheetsException exception
+    ) {
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
+                .body(new ApiResponse(
+                        false,
+                        "The form could not be saved right now. Please try again."
+                ));
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ApiResponse> handleUnexpected(Exception exception) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(new ApiResponse(
+                        false,
+                        "An unexpected error occurred."
+                ));
+    }
+}
 }
