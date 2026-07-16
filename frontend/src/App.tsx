@@ -103,7 +103,7 @@ export default function App() {
             required
             type="tel"
             value={formData.number}
-            placeholder="070 135 5676"
+            placeholder="Enter your phone number"
             autoComplete="tel"
             maxLength={20}
             onChange={(event) => updateField("number", event.target.value)}
