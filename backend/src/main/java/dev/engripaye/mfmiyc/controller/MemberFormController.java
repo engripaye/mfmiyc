@@ -1,11 +1,11 @@
-package controller;
+package dev.engripaye.mfmiyc.controller;
 
-import dto.ApiResponse;
-import dto.MemberFormRequest;
+import dev.engripaye.mfmiyc.dto.ApiResponse;
+import dev.engripaye.mfmiyc.dto.MemberFormRequest;
+import dev.engripaye.mfmiyc.service.MemberFormService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import service.MemberFormService;
 
 @RestController
 @RequestMapping("/api/members")

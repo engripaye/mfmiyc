@@ -18,7 +18,7 @@ This provides a lightweight, serverless-friendly data storage solution that is e
 
 ## ✨ Features
 
-* ✅ RESTful API built with Spring Boot 3.5
+* ✅ RESTful API built with Spring Boot 4.1
 * ✅ Java 21
 * ✅ Google Sheets API integration
 * ✅ Automatic member data storage
@@ -107,7 +107,7 @@ mfmiyc-member-form-backend/
 ## Submit Member Information
 
 ```http
-POST /api/v1/member-forms
+POST /api/members
 ```
 
 ### Request
@@ -115,7 +115,7 @@ POST /api/v1/member-forms
 ```json
 {
   "name": "John Doe",
-  "contact": "+2348000000000",
+  "number": "0701355676",
   "houseAddress": "Lagos, Nigeria",
   "prayerRequest": "Pray for my family",
   "birthdayDate": "2000-05-20"
@@ -128,7 +128,6 @@ POST /api/v1/member-forms
 {
   "success": true,
   "message": "Your information has been submitted successfully.",
-  "timestamp": "2026-07-13T03:31:00"
 }
 ```
 
@@ -137,7 +136,7 @@ POST /api/v1/member-forms
 ## Health Check
 
 ```http
-GET /api/v1/member-forms/health
+GET /api/members/health
 ```
 
 Response
@@ -158,7 +157,7 @@ Every submission is automatically written into Google Sheets in the following or
 | Column | Field          |
 | ------ | -------------- |
 | A      | Name           |
-| B      | Contact        |
+| B      | Phone Number   |
 | C      | House Address  |
 | D      | Prayer Request |
 | E      | Birthday Date  |
@@ -172,7 +171,7 @@ The backend validates all incoming requests before processing.
 
 | Field          | Validation                  |
 | -------------- | --------------------------- |
-| Name           | Required (2–120 characters) |
+| Name           | Required (max 120 characters) |
 | Contact        | Valid phone number          |
 | House Address  | Required                    |
 | Prayer Request | Optional (max 2000 chars)   |
@@ -204,7 +203,7 @@ FRONTEND_URL=http://localhost:5173
 
 GOOGLE_SPREADSHEET_ID=
 
-GOOGLE_SHEET_NAME=Members
+GOOGLE_SHEET_NAME=Sheet1
 
 GOOGLE_SERVICE_ACCOUNT_FILE=
 ```

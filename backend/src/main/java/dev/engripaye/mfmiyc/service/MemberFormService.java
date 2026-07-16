@@ -1,6 +1,6 @@
-package service;
+package dev.engripaye.mfmiyc.service;
 
-import dto.MemberFormRequest;
+import dev.engripaye.mfmiyc.dto.MemberFormRequest;
 
 public interface MemberFormService {
 

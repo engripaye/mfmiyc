@@ -1,4 +1,4 @@
-package config;
+package dev.engripaye.mfmiyc.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

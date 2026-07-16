@@ -1,6 +1,8 @@
 spring:
   application:
     name: mfmiyc-member-form-api
+  config:
+    import: optional:file:.env[.properties]
 
 server:
   port: ${PORT:8080}
@@ -15,5 +17,4 @@ google:
     json: ${GOOGLE_SERVICE_ACCOUNT_JSON:}
   sheets:
     spreadsheet-id: ${GOOGLE_SPREADSHEET_ID}
-    sheet-name: ${GOOGLE_SHEET_NAME:Members}
-
+    sheet-name: ${GOOGLE_SHEET_NAME:Sheet1}

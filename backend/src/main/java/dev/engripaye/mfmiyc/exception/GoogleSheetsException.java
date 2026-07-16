@@ -1,4 +1,4 @@
-package exception;
+package dev.engripaye.mfmiyc.exception;
 
 public class GoogleSheetsException extends RuntimeException{
 

@@ -1,4 +1,4 @@
-package dto;
+package dev.engripaye.mfmiyc.dto;
 
 import jakarta.validation.constraints.*;
 
@@ -15,12 +15,6 @@ public record MemberFormRequest(
                 message = "Enter a valid phone number."
         )
         String number,
-
-        @Size(
-                max = 120,
-                message = "Social media handle must not exceed 120 characters."
-        )
-        String socialMediaHandle,
 
         @NotBlank(message = "House address is required.")
         @Size(

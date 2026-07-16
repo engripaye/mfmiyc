@@ -1,6 +1,6 @@
-package exception;
+package dev.engripaye.mfmiyc.exception;
 
-import dto.ApiResponse;
+import dev.engripaye.mfmiyc.dto.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;

@@ -1,4 +1,4 @@
-package dto;
+package dev.engripaye.mfmiyc.dto;
 
 public record ApiResponse(
         boolean success,

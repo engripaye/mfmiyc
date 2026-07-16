@@ -6,7 +6,6 @@ import type { MemberFormData } from "./types/member";
 const initialForm: MemberFormData = {
   name: "",
   number: "",
-  socialMediaHandle: "",
   houseAddress: "",
   prayerRequest: "",
   birthdayDate: "",
@@ -61,12 +60,19 @@ export default function App() {
     <main className="page">
       <section className="form-card">
         <header className="form-header">
-          <p className="eyebrow">Mountain of Fire and Miracles Ministries</p>
-          <h1>MFM IYC Member Form</h1>
-          <p>
-            Please enter your information correctly. Fields marked with an
-            asterisk are required.
-          </p>
+          <img
+            className="church-logo"
+            src="/images/mfm-iyc-logo.jpg"
+            alt="MFM Ipaja Youth Church"
+          />
+          <div className="header-copy">
+            <p className="eyebrow">Mountain of Fire and Miracles Ministries</p>
+            <h1>Member Information Form</h1>
+            <p>
+              Welcome to MFM Ipaja Youth Church. Please provide your details
+              below so we can stay connected with you.
+            </p>
+          </div>
         </header>
 
         {status.type !== "idle" && (
@@ -97,26 +103,15 @@ export default function App() {
             required
             type="tel"
             value={formData.number}
-            placeholder="+234 800 000 0000"
+            placeholder="070 135 5676"
             autoComplete="tel"
             maxLength={20}
             onChange={(event) => updateField("number", event.target.value)}
           />
 
           <FormField
-            id="socialMediaHandle"
-            label="3. Social Media Handle"
-            value={formData.socialMediaHandle}
-            placeholder="@yourhandle"
-            maxLength={120}
-            onChange={(event) =>
-              updateField("socialMediaHandle", event.target.value)
-            }
-          />
-
-          <FormField
             id="houseAddress"
-            label="4. House Address"
+            label="3. House Address"
             required
           >
             <textarea
@@ -134,7 +129,7 @@ export default function App() {
             />
           </FormField>
 
-          <FormField id="prayerRequest" label="5. Prayer Request">
+          <FormField id="prayerRequest" label="4. Prayer Request">
             <textarea
               id="prayerRequest"
               name="prayerRequest"
@@ -150,7 +145,7 @@ export default function App() {
 
           <FormField
             id="birthdayDate"
-            label="6. Birthday Date"
+            label="5. Birthday Date"
             required
             type="date"
             value={formData.birthdayDate}
@@ -161,8 +156,9 @@ export default function App() {
           />
 
           <p className="privacy-note">
-            Your information will be used only for church administration,
-            member communication, and prayer support.
+            <span aria-hidden="true">&#128274;</span> Your information is private
+            and will be used only for church administration, communication,
+            and prayer support. Fields marked with * are required.
           </p>
 
           <button type="submit" disabled={isSubmitting}>

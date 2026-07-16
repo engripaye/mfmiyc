@@ -1,9 +1,9 @@
-package service;
+package dev.engripaye.mfmiyc.service;
 
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.model.ValueRange;
-import dto.MemberFormRequest;
-import exception.GoogleSheetsException;
+import dev.engripaye.mfmiyc.dto.MemberFormRequest;
+import dev.engripaye.mfmiyc.exception.GoogleSheetsException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +23,7 @@ public class GoogleSheetsMemberFormService implements MemberFormService {
     public GoogleSheetsMemberFormService(
             Sheets sheets,
             @Value("${google.sheets.spreadsheet-id}") String spreadsheetId,
-            @Value("${google.sheets.sheet-name:Members}") String sheetName
+            @Value("${google.sheets.sheet-name:Sheet1}") String sheetName
     ) {
         this.sheets = sheets;
         this.spreadsheetId = spreadsheetId;
@@ -35,7 +35,6 @@ public class GoogleSheetsMemberFormService implements MemberFormService {
         List<Object> row = List.of(
                 clean(request.name()),
                 clean(request.number()),
-                clean(request.socialMediaHandle()),
                 clean(request.houseAddress()),
                 clean(request.prayerRequest()),
                 request.birthdayDate().toString(),
@@ -43,7 +42,7 @@ public class GoogleSheetsMemberFormService implements MemberFormService {
         );
 
         ValueRange body = new ValueRange().setValues(List.of(row));
-        String range = "'" + sheetName.replace("'", "''") + "'!A:G";
+        String range = "'" + sheetName.replace("'", "''") + "'!A:F";
 
         try {
             sheets.spreadsheets()
