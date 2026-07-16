@@ -75,10 +75,10 @@ export default function App() {
           </div>
         </header>
 
-        {status.type !== "idle" && (
+        {status.type === "error" && (
           <div
-            className={`alert alert-${status.type}`}
-            role="status"
+            className="alert alert-error"
+            role="alert"
             aria-live="polite"
           >
             {status.message}
@@ -166,6 +166,39 @@ export default function App() {
           </button>
         </form>
       </section>
+
+      {status.type === "success" && (
+        <div className="success-overlay" role="presentation">
+          <section
+            className="success-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="success-title"
+            aria-describedby="success-description"
+          >
+            <div className="success-icon" aria-hidden="true">
+              <span>✓</span>
+            </div>
+            <p className="success-kicker">Submission received</p>
+            <h2 id="success-title">Thank you!</h2>
+            <p id="success-description" className="success-message">
+              {status.message}
+            </p>
+            <p className="success-note">
+              We’re delighted to have you connected with MFM Ipaja Youth
+              Church. God bless you.
+            </p>
+            <button
+              className="success-close"
+              type="button"
+              autoFocus
+              onClick={() => setStatus({ type: "idle", message: "" })}
+            >
+              Done
+            </button>
+          </section>
+        </div>
+      )}
     </main>
   );
 }

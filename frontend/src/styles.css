@@ -212,6 +212,100 @@ button:disabled {
   border: 1px solid #f1c1c1;
 }
 
+.success-overlay {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(28, 6, 39, 0.72);
+  backdrop-filter: blur(8px);
+  animation: overlay-in 220ms ease-out;
+}
+
+.success-modal {
+  width: min(100%, 470px);
+  padding: 40px 34px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 26px;
+  background: #ffffff;
+  color: #34203f;
+  text-align: center;
+  box-shadow: 0 28px 90px rgba(20, 4, 30, 0.5);
+  animation: modal-in 300ms cubic-bezier(0.2, 0.9, 0.3, 1.15);
+}
+
+.success-icon {
+  width: 82px;
+  height: 82px;
+  margin: 0 auto 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6b1f88, #a744c5);
+  box-shadow: 0 12px 28px rgba(107, 31, 136, 0.28);
+}
+
+.success-icon span {
+  color: #ffffff;
+  font-size: 2.6rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.success-kicker {
+  margin: 0 0 8px;
+  color: #8b35a8;
+  font-size: 0.76rem;
+  font-weight: 850;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.success-modal h2 {
+  margin: 0 0 10px;
+  color: #32143f;
+  font-size: clamp(2rem, 7vw, 2.65rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.success-message {
+  margin: 0;
+  color: #4f2d5e;
+  font-size: 1.08rem;
+  font-weight: 750;
+  line-height: 1.5;
+}
+
+.success-note {
+  margin: 14px auto 26px;
+  max-width: 360px;
+  color: #796582;
+  line-height: 1.6;
+}
+
+.success-close {
+  max-width: 220px;
+}
+
+@keyframes overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @media (max-width: 600px) {
   .page {
     padding: 18px 10px 28px;
@@ -253,6 +347,16 @@ button:disabled {
   .alert {
     margin-left: 20px;
     margin-right: 20px;
+  }
+
+  .success-modal {
+    padding: 34px 22px 26px;
+    border-radius: 22px;
+  }
+
+  .success-icon {
+    width: 72px;
+    height: 72px;
   }
 }
 
