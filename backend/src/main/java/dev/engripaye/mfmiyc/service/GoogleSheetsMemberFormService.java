@@ -10,10 +10,15 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class GoogleSheetsMemberFormService implements MemberFormService {
+
+    private static final DateTimeFormatter BIRTHDAY_FORMAT =
+            DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.ENGLISH);
 
     private final Sheets sheets;
     private final String spreadsheetId;
@@ -37,7 +42,7 @@ public class GoogleSheetsMemberFormService implements MemberFormService {
                 clean(request.number()),
                 clean(request.houseAddress()),
                 clean(request.prayerRequest()),
-                request.birthdayDate().toString(),
+                request.birthdayDate().format(BIRTHDAY_FORMAT),
                 OffsetDateTime.now(ZoneOffset.UTC).toString()
         );
 
